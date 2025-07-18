@@ -5,18 +5,18 @@ import {
   Outlet,
   Scripts,
   createRootRouteWithContext,
-} from '@tanstack/react-router'
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
-import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
-import * as React from 'react'
-import type { QueryClient } from '@tanstack/react-query'
-import { DefaultCatchBoundary } from '~/components/DefaultCatchBoundary'
-import { NotFound } from '~/components/NotFound'
-import appCss from '~/styles/app.css?url'
-import { seo } from '~/utils/seo'
+} from '@tanstack/react-router';
+import {ReactQueryDevtools} from '@tanstack/react-query-devtools';
+import {TanStackRouterDevtools} from '@tanstack/react-router-devtools';
+import * as React from 'react';
+import type {QueryClient} from '@tanstack/react-query';
+import {DefaultCatchBoundary} from '~/components/DefaultCatchBoundary';
+import {NotFound} from '~/components/NotFound';
+import appCss from '~/styles/app.css?url';
+import {seo} from '~/utils/seo';
 
 export const Route = createRootRouteWithContext<{
-  queryClient: QueryClient
+  queryClient: QueryClient;
 }>()({
   head: () => ({
     meta: [
@@ -34,7 +34,7 @@ export const Route = createRootRouteWithContext<{
       }),
     ],
     links: [
-      { rel: 'stylesheet', href: appCss },
+      {rel: 'stylesheet', href: appCss},
       {
         rel: 'apple-touch-icon',
         sizes: '180x180',
@@ -52,30 +52,30 @@ export const Route = createRootRouteWithContext<{
         sizes: '16x16',
         href: '/favicon-16x16.png',
       },
-      { rel: 'manifest', href: '/site.webmanifest', color: '#fffff' },
-      { rel: 'icon', href: '/favicon.ico' },
+      {rel: 'manifest', href: '/site.webmanifest', color: '#fffff'},
+      {rel: 'icon', href: '/favicon.ico'},
     ],
   }),
-  errorComponent: (props) => {
+  errorComponent: props => {
     return (
       <RootDocument>
         <DefaultCatchBoundary {...props} />
       </RootDocument>
-    )
+    );
   },
   notFoundComponent: () => <NotFound />,
   component: RootComponent,
-})
+});
 
 function RootComponent() {
   return (
     <RootDocument>
       <Outlet />
     </RootDocument>
-  )
+  );
 }
 
-function RootDocument({ children }: { children: React.ReactNode }) {
+function RootDocument({children}: {children: React.ReactNode}) {
   return (
     <html>
       <head>
@@ -88,50 +88,18 @@ function RootDocument({ children }: { children: React.ReactNode }) {
             activeProps={{
               className: 'font-bold',
             }}
-            activeOptions={{ exact: true }}
+            activeOptions={{exact: true}}
           >
             Home
-          </Link>{' '}
+          </Link>
           <Link
-            to="/posts"
+            to="/example"
             activeProps={{
               className: 'font-bold',
             }}
+            activeOptions={{exact: true}}
           >
-            Posts
-          </Link>{' '}
-          <Link
-            to="/users"
-            activeProps={{
-              className: 'font-bold',
-            }}
-          >
-            Users
-          </Link>{' '}
-          <Link
-            to="/route-a"
-            activeProps={{
-              className: 'font-bold',
-            }}
-          >
-            Pathless Layout
-          </Link>{' '}
-          <Link
-            to="/deferred"
-            activeProps={{
-              className: 'font-bold',
-            }}
-          >
-            Deferred
-          </Link>{' '}
-          <Link
-            // @ts-expect-error
-            to="/this-route-does-not-exist"
-            activeProps={{
-              className: 'font-bold',
-            }}
-          >
-            This Route Does Not Exist
+            Example
           </Link>
         </div>
         <hr />
@@ -141,5 +109,5 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <Scripts />
       </body>
     </html>
-  )
+  );
 }
