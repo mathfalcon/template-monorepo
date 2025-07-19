@@ -1,22 +1,19 @@
 import {ExampleRepository} from '~/repositories';
-import {Example} from '~/shared';
-import { PaginatedResponse, WithPagination} from '~/types/pagination';
+import {WithPagination} from '~/types/pagination';
 import {GetExampleByIdDto} from './dtos';
 
 export class ExampleService {
   private repository = new ExampleRepository();
 
-  async getAllExamples(): Promise<Example[]> {
+  async getAllExamples() {
     return this.repository.findAll();
   }
 
-  async getAllExamplesPaginated(
-    args: WithPagination<{}>,
-  ): Promise<PaginatedResponse<Example>> {
+  async getAllExamplesPaginated(args: WithPagination<{}>) {
     return this.repository.findAllPaginated(args.pagination);
   }
 
-  async getExample(args: GetExampleByIdDto): Promise<Example> {
+  async getExample(args: GetExampleByIdDto) {
     return this.repository.findById(args.id);
   }
 }

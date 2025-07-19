@@ -22,5 +22,5 @@ export async function down(db: Kysely<any>): Promise<void> {
   // note: down migrations are optional. you can safely delete this function.
   // For more info, see: https://kysely.dev/docs/migrations
 
-  await db.schema.dropTable('pet').execute();
+  await db.schema.dropTable('example').execute();
 }

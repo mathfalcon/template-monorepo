@@ -1,4 +1,3 @@
-// tsconfig.base.json
 {
     "extends": "./tsconfig.gts.json",
     "compilerOptions": {

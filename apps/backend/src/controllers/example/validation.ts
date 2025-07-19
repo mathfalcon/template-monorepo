@@ -5,3 +5,5 @@ export const GetExampleByIdRouteSchema = z.object({
     id: z.uuid(),
   }),
 });
+
+export type GetExampleByIdRouteParams = z.infer<typeof GetExampleByIdRouteSchema>["params"];

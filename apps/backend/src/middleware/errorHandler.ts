@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from 'express'
 import { ZodError } from 'zod'
 import { AppError, ZodValidationError, InternalServerError } from '~/errors'
+import { ValidateError } from '@tsoa/runtime'
 
 interface ErrorResponse {
   error: string
@@ -19,6 +20,13 @@ export const errorHandler = (
   next: NextFunction
 ) => {
   let error = err
+
+  if (err instanceof ValidateError) {
+    return res.status(422).json({
+      message: "Validation Failed",
+      details: err?.fields,
+    });
+  }
 
   // Handle Zod validation errors
   if (err instanceof ZodError) {

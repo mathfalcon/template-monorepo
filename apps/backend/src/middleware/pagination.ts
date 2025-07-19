@@ -3,21 +3,25 @@ import {PaginatedResponse, PaginationOptions} from '~/types/pagination';
 import {validateRequest} from './validation';
 import z from 'zod';
 
+export const PaginationSchema = z.object({
+  page: z
+    .string()
+    .optional()
+    .transform(val => parseInt(val || '1')),
+  limit: z
+    .string()
+    .optional()
+    .transform(val => parseInt(val || '10')),
+  sortBy: z.string().optional(),
+  sortOrder: z.enum(['asc', 'desc']).optional(),
+});
+
+export type PaginationQuery = z.infer<typeof PaginationSchema>;
+
 const validatePagination = () =>
   validateRequest(
     z.object({
-      query: z.object({
-        page: z
-          .string()
-          .optional()
-          .transform(val => parseInt(val || '1')),
-        limit: z
-          .string()
-          .optional()
-          .transform(val => parseInt(val || '10')),
-        sortBy: z.string().optional(),
-        sortOrder: z.enum(['asc', 'desc']).optional(),
-      }),
+      query: PaginationSchema,
     }),
   );
 

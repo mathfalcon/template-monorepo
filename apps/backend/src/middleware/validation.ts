@@ -29,8 +29,3 @@ export const validateRequest = (schema: ValidationSchema) => {
     }
   };
 };
-
-// Higher-order function to create validation middleware with custom schemas
-export const createValidationMiddleware = (schema: ValidationSchema) => {
-  return validateRequest(schema);
-};
