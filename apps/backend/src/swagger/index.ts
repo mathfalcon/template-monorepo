@@ -7,10 +7,10 @@ import swaggerDocument from './swagger.json';
  * @param app Express.App
  */
 export function registerSwaggerRoutes(app: express.Application) {
-  app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+  app.use('/api/swagger/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
   console.info('Swagger route registered');
 
-  app.get('/swagger.json', async (req, res, next) => {
+  app.get('/api/swagger/swagger.json', async (req, res, next) => {
     try {
       res.json(swaggerDocument);
     } catch (e) {

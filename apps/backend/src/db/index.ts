@@ -7,13 +7,9 @@ import {
   POSTGRES_PASSWORD,
   POSTGRES_DB,
 } from '../config/env';
-import {Example} from '~/shared';
+import {DB} from '~/types';
 
-export interface Database {
-  examples: Example;
-}
-
-export const db = new Kysely<Database>({
+export const db = new Kysely<DB>({
   dialect: new PostgresDialect({
     pool: new Pool({
       host: POSTGRES_HOST,

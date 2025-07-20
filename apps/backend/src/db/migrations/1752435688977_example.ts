@@ -7,8 +7,8 @@ export async function up(db: Kysely<any>): Promise<void> {
   // For more info, see: https://kysely.dev/docs/migrations
 
   await db.schema
-    .createTable('example')
-    .addColumn('id', 'serial', col => col.primaryKey())
+    .createTable('examples')
+    .addColumn('id', 'uuid', col => col.primaryKey())
     .addColumn('name', 'varchar', col => col.notNull())
     .addColumn('created_at', 'timestamp', col =>
       col.defaultTo(sql`now()`).notNull(),
@@ -22,5 +22,5 @@ export async function down(db: Kysely<any>): Promise<void> {
   // note: down migrations are optional. you can safely delete this function.
   // For more info, see: https://kysely.dev/docs/migrations
 
-  await db.schema.dropTable('example').execute();
+  await db.schema.dropTable('examples').execute();
 }

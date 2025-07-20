@@ -11,12 +11,12 @@ export type Generated<T> = T extends ColumnType<infer S, infer I, infer U>
 
 export type Timestamp = ColumnType<Date, Date | string, Date | string>;
 
-export interface Example {
+export interface Examples {
   createdAt: Generated<Timestamp>;
-  id: Generated<number>;
+  id: string;
   name: string;
 }
 
 export interface DB {
-  example: Example;
+  examples: Examples;
 }

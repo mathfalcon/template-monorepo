@@ -46,16 +46,6 @@ const models: TsoaRoute.Models = {
         "type": {"ref":"infer_typeofPaginationSchema_","validators":{}},
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "infer_typeofMyValidator_": {
-        "dataType": "refAlias",
-        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"msg":{"dataType":"string","required":true},"code":{"dataType":"double","required":true},"result":{"dataType":"nestedObjectLiteral","nestedProperties":{"price":{"dataType":"string","required":true}},"required":true}},"validators":{}},
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "MyResponse": {
-        "dataType": "refAlias",
-        "type": {"ref":"infer_typeofMyValidator_","validators":{}},
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "Record_string.any_": {
         "dataType": "refAlias",
         "type": {"dataType":"nestedObjectLiteral","nestedProperties":{},"additionalProperties":{"dataType":"any"},"validators":{}},
@@ -133,8 +123,9 @@ export function RegisterRoutes(app: Router) {
         const argsExampleController_getAllPaginated: Record<string, TsoaRoute.ParameterSchema> = {
                 query: {"in":"queries","name":"query","required":true,"dataType":"nestedObjectLiteral","nestedProperties":{"sortOrder":{"dataType":"union","subSchemas":[{"dataType":"enum","enums":["asc"]},{"dataType":"enum","enums":["desc"]}]},"sortBy":{"dataType":"string"},"limit":{"dataType":"double"},"page":{"dataType":"double"}}},
                 request: {"in":"request","name":"request","required":true,"dataType":"object"},
+                body: {"in":"body","name":"body","required":true,"ref":"PaginationQuery"},
         };
-        app.get('/examples/paginated',
+        app.post('/examples/paginated',
             ...(fetchMiddlewares<RequestHandler>(ExampleController)),
             ...(fetchMiddlewares<RequestHandler>(ExampleController.prototype.getAllPaginated)),
 
@@ -180,35 +171,6 @@ export function RegisterRoutes(app: Router) {
 
               await templateService.apiHandler({
                 methodName: 'getOne',
-                controller,
-                response,
-                next,
-                validatedArgs,
-                successStatus: undefined,
-              });
-            } catch (err) {
-                return next(err);
-            }
-        });
-        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-        const argsExampleController_getTest: Record<string, TsoaRoute.ParameterSchema> = {
-        };
-        app.get('/examples/test',
-            ...(fetchMiddlewares<RequestHandler>(ExampleController)),
-            ...(fetchMiddlewares<RequestHandler>(ExampleController.prototype.getTest)),
-
-            async function ExampleController_getTest(request: ExRequest, response: ExResponse, next: any) {
-
-            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-
-            let validatedArgs: any[] = [];
-            try {
-                validatedArgs = templateService.getValidatedArgs({ args: argsExampleController_getTest, request, response });
-
-                const controller = new ExampleController();
-
-              await templateService.apiHandler({
-                methodName: 'getTest',
                 controller,
                 response,
                 next,
