@@ -82,9 +82,9 @@ function RootDocument({children}: {children: React.ReactNode}) {
         <HeadContent />
       </head>
       <body>
-        <div className="p-2 flex gap-2 text-lg">
+        <div className='p-2 flex gap-2 text-lg'>
           <Link
-            to="/"
+            to='/'
             activeProps={{
               className: 'font-bold',
             }}
@@ -93,7 +93,7 @@ function RootDocument({children}: {children: React.ReactNode}) {
             Home
           </Link>
           <Link
-            to="/example"
+            to='/example'
             activeProps={{
               className: 'font-bold',
             }}
@@ -104,8 +104,8 @@ function RootDocument({children}: {children: React.ReactNode}) {
         </div>
         <hr />
         {children}
-        <TanStackRouterDevtools position="bottom-right" />
-        <ReactQueryDevtools buttonPosition="bottom-left" />
+        <TanStackRouterDevtools position='bottom-right' />
+        <ReactQueryDevtools buttonPosition='bottom-left' />
         <Scripts />
       </body>
     </html>

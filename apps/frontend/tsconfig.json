@@ -19,7 +19,8 @@
       "~/shared": ["../../packages/shared/src"],
       "~/shared/*": ["../../packages/shared/src/*"]
     },
-    "noEmit": true
+    "noEmit": true,
+    "noUncheckedIndexedAccess": true
   },
   "references": [
     {
